@@ -1,21 +1,10 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTodos } from "../redux/reducer";
 import { GoPlus } from "react-icons/go";
 
-const mapStateToProps = (state) => {
-  return {
-    todos: state,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addTodo: (obj) => dispatch(addTodos(obj)),
-  };
-};
-
-const Todos = (props) => {
+const Todos = () => {
+  const dispatch = useDispatch();
   const [todo, setTodo] = useState("");
 
   const handleChange = (e) => {
@@ -26,30 +15,35 @@ const Todos = (props) => {
     if (todo === "") {
       alert("Input is Empty");
     } else {
-      props.addTodo({
-        id: Math.floor(Math.random() * 1000),
-        item: todo,
-        completed: false,
-      });
+      dispatch(
+        addTodos({
+          id: Math.floor(Math.random() * 1000),
+          item: todo,
+          completed: false,
+        })
+      );
       setTodo("");
     }
   };
-  //console.log("props from store", props);
-  return (
-    <div className="addTodos">
-      <input
-        type="text"
-        onChange={(e) => handleChange(e)}
-        className="todo-input"
-        value={todo}
-      />
 
-      <button className="add-btn" onClick={() => add()}>
-        <GoPlus />
-      </button>
-      <br />
-    </div>
+  return (
+    <>
+      <h1>To Do Item</h1>
+      <div className="addTodos">
+        <input
+          type="text"
+          onChange={(e) => handleChange(e)}
+          className="todo-input"
+          value={todo}
+        />
+
+        <button className="add-btn" onClick={() => add()}>
+          <GoPlus />
+        </button>
+        <br />
+      </div>
+    </>
   );
 };
-//we can use connect method to connect this component with redux store
-export default connect(mapStateToProps, mapDispatchToProps)(Todos);
+
+export default Todos;

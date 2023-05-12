@@ -25,7 +25,7 @@ body {
 }
 
 .App {
-  margin-top: 3rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -33,7 +33,7 @@ body {
 .App h1 {
   display: inline;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: #e1ebfd;
 
   text-shadow: 0 0 5px #433aa8, 3px -1px 5px #271c6c;
@@ -42,6 +42,7 @@ body {
 .addTodos {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .todo-input {
@@ -181,7 +182,16 @@ body {
   border-radius: 20px;
 }
 
-/* @media Screen and (max-width: 640px) {
+.searchbar {
+  margin-bottom: 30px;
+}
+
+.pagination{
+  display: flex;
+  align-items: center;
+}
+
+@media Screen and (max-width: 640px) {
   .displaytodos {
     overflow: hidden;
     margin-top: 2rem;
@@ -195,5 +205,5 @@ body {
   }
   .card {
     margin-right: 0;
-  } */
-/* } */
+  }
+}
